@@ -1,0 +1,23 @@
+Bob Want to register 
+Bob want To Log in
+Bob Want To Log Out
+Bob Want To View Avaliable Packages
+Bob want to choose a package
+Bob want to select payment date
+Bob want to claim
+Bob want to calc claim
+Bob want upgrade package
+Bob want to Down Grade Package
+Bob want to add addons 
+Bob want to cancel package 
+
+
+
+UsePay Card 
+
+Bob want To create account
+Bob want To upload Documents
+Bob want To agree on Terms and Conditions
+Bob want To Add Money On Day base or Month Or Week, on he's or her UsePay Card, 
+Bob Want To Stop UsePay Card
+
