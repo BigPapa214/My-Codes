@@ -1,0 +1,64 @@
+using System;
+using Microsoft.Office.Interop.Excel;
+namespace Weekly_Report
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Crete COM Objects.
+            Application exelApp = new Application();
+
+                string getname= exelApp.GetOpenFilename("All Files (*.*), *.*");
+                if (exelApp == null)
+                {
+                    Console.WriteLine("Excel Not Installed");
+                    return;
+                }
+            //Create a book ,pages and range variables 
+            Workbook excellWorkBook = exelApp.Workbooks.Open(getname);
+            _Worksheet ws = excellWorkBook.Worksheets[1];
+
+           
+            
+            //ws.Columns.Merge("H1:I1");
+            try
+            {
+                //ws.Columns["Shift"].Insert(9, 1);
+                //ws.Rows[0][8].Value2 = "Shif";
+                Range excelRange = ws.UsedRange;
+
+               // ws.UsedRange.Columns.AutoFit();
+                //ws.UsedRange.Columns.AutoFilter();
+                //excelRange.Columns["shift"].Insert(7);
+
+
+
+                //Col and raw count
+                int RowCount = excelRange.Rows.Count;
+                int colCount = excelRange.Columns.Count;
+
+                //read step by step cols and raws
+                for (int i = 1; i <= RowCount; i++)
+                {
+                    //create a new line
+                    Console.WriteLine("r\n");
+                    for (int j = 1; j <= colCount; j++)
+                    {
+                        if (excelRange.Cells[i, j] != null && excelRange.Cells[i, j].Value2 != null)
+                            Console.Write(excelRange.Cells[i, j].Value2.ToString() + "\t");
+                    }
+                }
+                //After Reading release the excel project
+            }
+            catch(Exception e)
+            {
+                string res = "";
+                res= e.Message;
+            }
+            exelApp.Quit();
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(exelApp);
+            Console.ReadLine();
+        }
+    }
+}
