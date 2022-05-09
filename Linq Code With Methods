@@ -1,0 +1,132 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LinqProject
+{
+    class Wording
+    {
+        //private string[] word = new string[10];
+        
+        public void SortWords(string[]words)
+        {
+            //Lamda (Method) Syntax
+            var shtW = words.Where(a=>a.Length<=5);
+            
+            foreach (var shotW in shtW)
+            {    
+                Console.WriteLine("My Short Words:"+"-"+ shotW); 
+            }
+            Console.ReadLine();
+        }
+        //Find The Shotest Word from Words Array
+        public void ShotestWord(string[]words)
+        {
+            string smallest = words[0];
+            for(int i=1;i<words.Length;i++)
+            {
+              if(words[i].Length<smallest.Length)
+                {
+                    smallest = words[i];
+                }
+            }
+            Console.WriteLine("Your Smallest String is {0} " , smallest);
+            Console.ReadLine();
+        }
+        
+        //Find The Longest Word from Words Array
+        public void LongestWord(string[] words)
+        {
+            string Longest = words[0];
+            for (int i = 1; i < words.Length; i++)
+            {
+                if (words[i].Length > Longest.Length)
+                {
+                    Longest = words[i];
+                }
+            }
+            Console.WriteLine("Your Smallest String is {0} ", Longest);
+            Console.ReadLine();
+        }
+        //Find Words with char T from Words Array
+        public void WordsWithT(string[]Tword)
+        {
+            var T = from i in Tword where Tword.Contains("T")select i;
+           
+            foreach(var Tc in T)
+            {
+                if (T.Contains("T"))
+                {
+                    Console.WriteLine("Worcds With T is {0}", Tc);
+                }
+                else
+                {
+                    Console.WriteLine("No Word With T found please find onother charactor");
+                }
+               
+            }
+          
+            Console.ReadLine();
+        }
+        //Simple Select
+        public void Simpleselect(int[]mynum)
+        {
+            
+            var snum = from n in mynum select n;
+
+            foreach (var i in snum)
+            {
+                Console.WriteLine("My Int Nums:" + "-" + i);
+            }
+            Console.ReadLine();
+        }
+        //Multiple select
+        public void MultipleSel(int[]numA,int[]numB)
+        {
+            var pairs = from a in numA from b in numB where a < b select new { a, b };
+            Console.WriteLine("Pairs Where A<B:");
+            foreach (var item in pairs)
+            {
+                Console.WriteLine("{0} is less than {1}", item.a, item.b);
+               
+            }
+            Console.ReadLine();
+        }
+        //Order by
+        public void OrderBy(string[]Words)
+        {
+            var sotedW = from s in Words orderby s select s;
+            Console.WriteLine("The Sorted List Of Words");
+            foreach(var item in sotedW) 
+            {
+                Console.WriteLine(item);
+                
+            }
+            Console.ReadLine();
+        }
+        //Count function
+        public void factorsOf300(int[]factorsOf300)
+        {
+            int uniquFactors = factorsOf300.Distinct().Count();
+            Console.WriteLine("The are {0} Factors of 300.", uniquFactors);
+            Console.ReadLine();
+        }
+        //Count function 2 oddNumbers
+        public void oddNumbers(int[] oddNum)
+        {
+            //This Code will tell the user about odd numbers
+            int oddNumbers = oddNum.Count(n => n % 2 == 1);
+            Console.WriteLine("The are {0} odd numbers in the list.", oddNumbers);
+            Console.ReadLine();
+        }
+
+        public void EvenNum(int[] Eve)
+        {
+            int eveNum = Eve.Count(e => e % 2 == 0);
+            Console.WriteLine("The are {0} Even Numbers", eveNum);
+            Console.ReadLine();
+        }
+    }
+}
