@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ReadFiles
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            readAlllines();
+        }
+
+        public static void readAlllines()
+        {
+            // Read To Files 
+            List<string> fileDataResident = File.ReadAllLines(@"C:\Users\ct302482\Desktop\AllIn.txt").ToList();
+            List<string> notGood = File.ReadAllLines(@"C:\Users\ct302482\Desktop\CheckTrue.txt").ToList();
+            //Linq Line of code that copare two files
+            var results = fileDataResident.Where(x => notGood.Any(y => x.Contains(y))).ToList();
+            // Write To a File
+            File.WriteAllLines(@"C:\Users\ct302482\Desktop\output.txt", results.ToArray());
+        }
+    }
+}
+
